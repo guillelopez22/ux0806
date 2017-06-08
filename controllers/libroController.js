@@ -1,11 +1,11 @@
-var student = require('../schemas/libro');
+var libro = require('../schemas/libro');
 
 
 
 exports.createLibro = {
   handler: function(request, reply){
     var newLibro = new libro({
-      name: request.payload.name, 
+      name: request.payload.name,
       genero: request.payload.genero,
       autor: request.payload.autor,
       añoPublicacion: request.payload.añoPublicacion,
@@ -24,7 +24,7 @@ exports.updateLibro = {
   handler: function(request, reply){
     User.findOne({'Id': request.params.Id}, function(err, libro){
       if (!err) {
-        libro.name = request.payload.name, 
+        libro.name = request.payload.name,
         libro.genero = request.payload.genero,
         libro.autor = request.payload.autor,
         libro.añoPublicacion = request.payload.añoPublicacion,
@@ -38,6 +38,34 @@ exports.updateLibro = {
         return reply('ok');
       }
     });
+exports.buscartodoLibro = {
+  handler:function(request,reply){
+    var libro = libro.find({'Id':request.param.id});
+    return reply(libro);
+  }
+}
+
+exports.todoLibro = {
+  handler:function(reply){
+    var libro = libro.find({});
+    return reply(libro);
+  }
+}
+
+exports.buscarLibro = {
+  handler:function(reply){
+    var libro = libro.find({});
+    return reply(libro);
+  }
+}
+
+exports.marcarLibro = {
+  handler:function(request,reply){
+    var libro = libro.find({'Id':request.param.id});
+    if(!err){
+      libro.disponibles= request.payload.disponibles;
+    }
+    return reply(libro);
   }
 }
 exports.deleteLibro = {
@@ -51,5 +79,3 @@ exports.deleteLibro = {
     });
   }
 }
-
-
