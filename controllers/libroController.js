@@ -34,6 +34,8 @@ exports.updateLibro = {
         libro.total = request.payload.total,
         libro.disponibles = request.payload.disponibles
         libro.save(libro);
+        console.log('updated');
+        return reply('ok');
       }
     });
   }
@@ -43,7 +45,8 @@ exports.deleteLibro = {
     User.findOne({ 'Id': request.params.Id }, function (err, libro) {
       if (!err && user) {
         libro.remove();
-        return reply({ message: "Operation Successful"});
+        console.log('it has been done');
+        return reply('ok');
       }
     });
   }
