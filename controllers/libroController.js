@@ -1,15 +1,37 @@
 var student = require('../schemas/libro');
 
+exports.createLibro = {
+handler: function(){
+  console.log("lol");
+  }
+}
 
+exports.updateLibro = {
 
-exports.e
-createLibro
-updateLibro
-deleteLibro
-buscartodoL
-todoLibro},
-buscarLibro
-marcarLibro
+}
+
+exports.deleteLibro = {
+
+}
+
+exports.buscartodoLibro = {
+  handler:function(request,reply){
+    reply(console.log("estamos adentro"));
+  }
+}
+
+exports.todoLibro = {
+
+}
+
+exports.buscarLibro = {
+
+}
+
+exports.marcarLibro = {
+
+}
+
 exports.getStudents = {
   auth: {
     mode:'required',
