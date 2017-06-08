@@ -1,62 +1,34 @@
-var student = require('../schemas/libro');
+var libro = require('../schemas/libro');
 
-exports.createLibro = {
-handler: function(){
-  console.log("lol");
-  }
-}
 
-exports.updateLibro = {
-
-}
-
-exports.deleteLibro = {
-
-}
 
 exports.buscartodoLibro = {
   handler:function(request,reply){
-    reply(console.log("estamos adentro"));
+    var libro = libro.find({'Id':request.param.id});
+    return reply(libro);
   }
 }
 
 exports.todoLibro = {
-
-}
-
-exports.buscarLibro = {
-
-}
-
-exports.marcarLibro = {
-
-}
-
-exports.getStudents = {
-  auth: {
-    mode:'required',
-    strategy:'session',
-    scope: ['admin', 'regular']
-  },
-  handler: function(request, reply){
-    var students = student.find({});
-    reply(students);
+  handler:function(reply){
+    var libro = libro.find({});
+    return reply(libro);
   }
 }
 
-exports.createStudent = {
-  auth: {
-    mode:'required',
-    strategy:'session',
-    scope: ['admin']
-  },
-  handler: function(request, reply){
-    var newStudent = new student({
-      name: request.payload.name,
-      account: request.payload.account
-    });
-    newStudent.save();
-    console.log('student saved');
-    return reply('ok');
+exports.buscarLibro = {
+  handler:function(reply){
+    var libro = libro.find({});
+    return reply(libro);
+  }
+}
+
+exports.marcarLibro = {
+  handler:function(request,reply){
+    var libro = libro.find({'Id':request.param.id});
+    if(!err){
+      libro.disponibles= request.payload.disponibles;
+    }
+    return reply(libro);
   }
 }
