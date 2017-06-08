@@ -24,7 +24,7 @@ db.once('open', function callback() {
 
 server.register([inert, auth], function(err){
 
-  
+
 
 	server.route(routes.endpoints);
 

@@ -1,7 +1,7 @@
 var mongoose = require('mongoose');
 
 var LibroSchema = new mongoose.Schema({
-  Id: Number,
+  Id: String,
   name : String,
   genero: String,
   autor: String,
@@ -9,8 +9,8 @@ var LibroSchema = new mongoose.Schema({
   editorial: String,
   descripcion: String,
   keywords: [String],
-  total: Number,
-  disponibles: Number,
+  total: String,
+  disponibles: String,
 });
 
 module.exports = mongoose.model('Libro', LibroSchema);
